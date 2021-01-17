@@ -1,0 +1,55 @@
+#settings {
+  color: #707070;
+  font-size: 30px;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  cursor: pointer;
+}
+#settings:hover {
+  animation: rotate 5s linear infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotateZ(-360deg);
+  }
+}
+.options {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  display: none;
+}
+.options .option {
+  height: 300px;
+  width: 300px;
+  background: #ffffff;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.options .option h1 {
+  padding-top: 50px;
+}
+.options .option span,
+.option input[type="radio"] {
+  margin: 10px 30px;
+}
+.options .option input[type="radio"] {
+  cursor: pointer;
+}
+.options .option .usd {
+  padding-top: 30px;
+}
+#close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 25px;
+  cursor: pointer;
+}

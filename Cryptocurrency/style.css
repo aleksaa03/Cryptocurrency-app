@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+h1,
+span {
+  color: #707070;
+  font-weight: 500;
+}
+.main .nav {
+  text-align: center;
+  padding-top: 100px;
+}
+.main .crypto {
+  padding-top: 30px;
+}
+.main .crypto .crypto-currency {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 30px 10px;
+}
+.main .crypto .crypto-currency span {
+  text-align: right;
+  position: absolute;
+  right: 100px;
+}
+.main .crypto .hr {
+  height: 3px;
+  width: 100%;
+  margin: auto;
+  border-radius: 24px;
+  background: #707070;
+}
+.main .crypto {
+  width: 90%;
+  margin: auto;
+}
+.main .crypto img,
+.crypto h2 {
+  margin: 0 5px;
+}
+.main .crypto h4 {
+  margin: 0 5px;
+}
+@media only screen and (max-width: 768px) {
+  .main .crypto .crypto-currency span {
+    right: 30px;
+  }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="shortcut icon" href="media/btc.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="convert.css" />
+    <title>Cryptocurrency</title>
+  </head>
+  <body>
+    <div class="options" id="options">
+      <div class="option">
+        <i class="fas fa-times" id="close" onclick="options('close')"></i>
+        <h1>Convert</h1>
+        <div class="usd">
+          <span>USD</span>
+          <input type="radio" name="radio" id="" class="radio" />
+        </div>
+        <div class="eur">
+          <span>EUR</span>
+          <input type="radio" name="radio" id="" class="radio" />
+        </div>
+        <div class="gbp">
+          <span>GBP</span>
+          <input type="radio" name="radio" id="" class="radio" />
+        </div>
+        <div class="gau">
+          <span>GAU</span>
+          <input type="radio" name="radio" id="" class="radio" />
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="nav">
+        <h1>Prices</h1>
+      </div>
+      <div class="crypto" id="crypto"></div>
+      <i class="fas fa-cog" id="settings" onclick="options('open')"></i>
+    </div>
+    <script src="app.js"></script>
+    <script src="src/index.js"></script>
+  </body>
+</html>
