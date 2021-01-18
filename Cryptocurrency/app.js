@@ -36,7 +36,6 @@ function getCrypto(value) {
   cryptoCurrency.push(value);
   counter++;
   if (counter == 6) {
-    console.log(cryptoCurrency);
     for (var i = 0; i < cryptoCurrency.length; i++) {
       cryptoDiv.innerHTML += `<div class="crypto-currency">
         <img src="media/${cryptoCurrency[i].symbol.toLowerCase()}.svg" alt="" />
@@ -75,12 +74,15 @@ function convertValue(currency, price) {
 
 var optionsDiv = document.getElementById("options");
 var radioButton = document.querySelectorAll(".radio");
+var settings = document.getElementById("settings");
 
 function options(click) {
   if (click == "open") {
     optionsDiv.style.display = "block";
+    settings.style.animation = "rotate 5s linear infinite";
   } else {
     optionsDiv.style.display = "none";
+    settings.style.animation = "";
   }
 }
 
