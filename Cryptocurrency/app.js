@@ -1,49 +1,25 @@
 var cryptoDiv = document.getElementById("crypto");
-var cryptoCurrency = [];
 
 fetch("https://data.messari.io/api/v1/assets")
   .then((response) => response.json())
   .then((data) => crypto(data));
 
 function crypto(response) {
-  for (var i = 0; i < response.data.length; i++) {
-    switch (response.data[i].symbol.toLowerCase()) {
-      case "btc":
-        getCrypto(response.data[i]);
-        break;
-      case "eth":
-        getCrypto(response.data[i]);
-        break;
-      case "bch":
-        getCrypto(response.data[i]);
-        break;
-      case "eos":
-        getCrypto(response.data[i]);
-        break;
-      case "ltc":
-        getCrypto(response.data[i]);
-        break;
-      case "usdt":
-        getCrypto(response.data[i]);
-        break;
+  var cryptoCurrency = response.data;
+
+  for (var i = 0; i < cryptoCurrency.length; i++) {
+    if (cryptoCurrency[i].symbol.toLowerCase() == "aave") {
+      i++;
     }
-  }
-}
-
-var counter = 0;
-
-function getCrypto(value) {
-  cryptoCurrency.push(value);
-  counter++;
-  if (counter == 6) {
-    for (var i = 0; i < cryptoCurrency.length; i++) {
-      cryptoDiv.innerHTML += `<div class="crypto-currency">
-        <img src="media/${cryptoCurrency[i].symbol.toLowerCase()}.svg" alt="" />
+    if (cryptoCurrency[i].symbol.toLowerCase() == "wbtc") {
+      cryptoCurrency[i].name = "Wrapped BTC";
+    }
+    cryptoDiv.innerHTML += `<div class="crypto-currency">
+        <img src="media/symbols/${cryptoCurrency[i].symbol.toLowerCase()}.svg" alt="" />
         <h4>${cryptoCurrency[i].name} (${cryptoCurrency[i].symbol})</h4>
         <span class="price" id="${cryptoCurrency[i].metrics.market_data.price_usd}"></span>
       </div>
       <div class="hr"><div>`;
-    }
   }
 }
 
@@ -80,9 +56,11 @@ function options(click) {
   if (click == "open") {
     optionsDiv.style.display = "block";
     settings.style.animation = "rotate 5s linear infinite";
+    document.body.style.overflow = "hidden";
   } else {
     optionsDiv.style.display = "none";
     settings.style.animation = "";
+    document.body.style.overflow = "visible";
   }
 }
 

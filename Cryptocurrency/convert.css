@@ -1,6 +1,9 @@
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+.main .crypto {
+  padding: 30px 0;
+}
 .main .nav {
   padding-top: 40px;
 }
@@ -8,8 +11,8 @@
   color: #707070;
   font-size: 30px;
   position: absolute;
-  left: 20px;
-  bottom: 20px;
+  right: 20px;
+  top: 20px;
   cursor: pointer;
 }
 #settings:hover {
