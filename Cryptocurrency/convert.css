@@ -7,6 +7,17 @@
 .main .nav {
   padding-top: 40px;
 }
+.main input[type="text"] {
+  display: block;
+  margin: 30px auto 0 auto;
+  height: 30px;
+  width: 90%;
+  padding: 5px;
+  font-size: 17px;
+  border-radius: 5px;
+  border: 1px solid #707070;
+  outline: none;
+}
 #settings {
   color: #707070;
   font-size: 30px;

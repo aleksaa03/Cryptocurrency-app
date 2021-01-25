@@ -7,20 +7,40 @@ fetch("https://data.messari.io/api/v1/assets")
 function crypto(response) {
   var cryptoCurrency = response.data;
 
-  for (var i = 0; i < cryptoCurrency.length; i++) {
-    if (cryptoCurrency[i].symbol.toLowerCase() == "aave") {
-      i++;
-    }
-    if (cryptoCurrency[i].symbol.toLowerCase() == "wbtc") {
-      cryptoCurrency[i].name = "Wrapped BTC";
-    }
-    cryptoDiv.innerHTML += `<div class="crypto-currency">
-        <img src="media/symbols/${cryptoCurrency[i].symbol.toLowerCase()}.svg" alt="" />
-        <h4>${cryptoCurrency[i].name} (${cryptoCurrency[i].symbol})</h4>
-        <span class="price" id="${cryptoCurrency[i].metrics.market_data.price_usd}"></span>
-      </div>
-      <div class="hr"><div>`;
+  if (localStorage.getItem("crypto") != null) {
+    localStorage.removeItem("crypto");
   }
+  save(cryptoCurrency);
+
+  for (var i = 0; i < cryptoCurrency.length; i++) {
+    switch (cryptoCurrency[i].symbol.toLowerCase()) {
+      case "aave":
+        i++;
+        break;
+      case "wbtc":
+        cryptoCurrency[i].name = "Wrapped BTC";
+        break;
+    }
+    output(cryptoCurrency[i]);
+  }
+}
+
+function output(array) {
+  cryptoDiv.innerHTML += `<div class="crypto-currency">
+    <img src="media/symbols/${array.symbol.toLowerCase()}.svg" alt="" />
+    <h4>${array.name} (${array.symbol})</h4>
+      <span class="price" id="${array.metrics.market_data.price_usd}"></span>
+    </div>
+    <div class="hr"><div>`;
+}
+
+function save(data) {
+  if (localStorage.getItem("crypto") != null) {
+    localStorage.removeItem("crypto");
+  }
+  var localSave = JSON.parse(localStorage.getItem("crypto")) || [];
+  localSave.push(data);
+  localStorage.setItem("crypto", JSON.stringify(localSave));
 }
 
 function convertValue(currency, price) {
@@ -87,4 +107,23 @@ if (convert != null) {
   radioButton[convert].checked = true;
 } else {
   radioButton[0].checked = true;
+}
+
+function search() {
+  var searchInput = document.getElementById("search").value;
+  var savedCrypto = JSON.parse(localStorage.getItem("crypto"));
+  cryptoDiv.innerHTML = "";
+
+  if (savedCrypto[0][15].symbol.toLowerCase() == "aave") {
+    savedCrypto[0].splice(15, 1);
+  }
+
+  for (var i = 0; i < savedCrypto[0].length; i++) {
+    if (savedCrypto[0][i].name == "Wrapped Bitcoin") {
+      savedCrypto[0][i].name = "Wrapped BTC";
+    }
+    if (savedCrypto[0][i].name.toLowerCase().indexOf(searchInput) > -1) {
+      output(savedCrypto[0][i]);
+    }
+  }
 }
