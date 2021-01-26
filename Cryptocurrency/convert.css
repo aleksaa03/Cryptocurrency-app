@@ -18,6 +18,14 @@
   border: 1px solid #707070;
   outline: none;
 }
+.main p {
+  position: absolute;
+  left: 5%;
+  font-size: 15px;
+  font-weight: 500;
+  color: #707070;
+  margin: 5px 0;
+}
 #settings {
   color: #707070;
   font-size: 30px;

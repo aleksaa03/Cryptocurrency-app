@@ -7,15 +7,10 @@ fetch("https://data.messari.io/api/v1/assets")
 function crypto(response) {
   var cryptoCurrency = response.data;
 
-  if (localStorage.getItem("crypto") != null) {
-    localStorage.removeItem("crypto");
-  }
-  save(cryptoCurrency);
-
   for (var i = 0; i < cryptoCurrency.length; i++) {
     switch (cryptoCurrency[i].symbol.toLowerCase()) {
       case "aave":
-        i++;
+        cryptoCurrency.splice(i, 1);
         break;
       case "wbtc":
         cryptoCurrency[i].name = "Wrapped BTC";
@@ -23,6 +18,8 @@ function crypto(response) {
     }
     output(cryptoCurrency[i]);
   }
+
+  save(cryptoCurrency);
 }
 
 function output(array) {
@@ -111,19 +108,19 @@ if (convert != null) {
 
 function search() {
   var searchInput = document.getElementById("search").value;
-  var savedCrypto = JSON.parse(localStorage.getItem("crypto"));
+  var savedCrypto = JSON.parse(localStorage.getItem("crypto"))[0];
   cryptoDiv.innerHTML = "";
 
-  if (savedCrypto[0][15].symbol.toLowerCase() == "aave") {
-    savedCrypto[0].splice(15, 1);
+  for (var i = 0; i < savedCrypto.length; i++) {
+    if (savedCrypto[i].name.toLowerCase().indexOf(searchInput.toLowerCase()) > -1) {
+      output(savedCrypto[i]);
+    }
   }
 
-  for (var i = 0; i < savedCrypto[0].length; i++) {
-    if (savedCrypto[0][i].name == "Wrapped Bitcoin") {
-      savedCrypto[0][i].name = "Wrapped BTC";
-    }
-    if (savedCrypto[0][i].name.toLowerCase().indexOf(searchInput) > -1) {
-      output(savedCrypto[0][i]);
-    }
+  var searchResults = document.getElementById("searchResults");
+  searchResults.innerHTML = `Search results found for "${searchInput}"`;
+
+  if (searchInput.length == 0) {
+    searchResults.innerHTML = "";
   }
 }
