@@ -32,12 +32,12 @@ function output(array) {
 }
 
 function save(data) {
-  if (localStorage.getItem("crypto") != null) {
-    localStorage.removeItem("crypto");
+  if (sessionStorage.getItem("crypto") != null) {
+    sessionStorage.removeItem("crypto");
   }
-  var localSave = JSON.parse(localStorage.getItem("crypto")) || [];
-  localSave.push(data);
-  localStorage.setItem("crypto", JSON.stringify(localSave));
+  var sessionSave = JSON.parse(sessionStorage.getItem("crypto")) || [];
+  sessionSave.push(data);
+  sessionStorage.setItem("crypto", JSON.stringify(sessionSave));
 }
 
 function convertValue(currency, price) {
@@ -108,7 +108,7 @@ if (convert != null) {
 
 function search() {
   var searchInput = document.getElementById("search").value;
-  var savedCrypto = JSON.parse(localStorage.getItem("crypto"))[0];
+  var savedCrypto = JSON.parse(sessionStorage.getItem("crypto"))[0];
   cryptoDiv.innerHTML = "";
 
   for (var i = 0; i < savedCrypto.length; i++) {
