@@ -4,6 +4,10 @@
 .main .crypto {
   padding: 30px 0;
 }
+.main .crypto .crypto-currency img {
+  height: 32px;
+  width: 32px;
+}
 .main .nav {
   padding-top: 40px;
 }

@@ -9,9 +9,6 @@ function crypto(response) {
 
   for (var i = 0; i < cryptoCurrency.length; i++) {
     switch (cryptoCurrency[i].symbol.toLowerCase()) {
-      case "aave":
-        cryptoCurrency.splice(i, 1);
-        break;
       case "wbtc":
         cryptoCurrency[i].name = "Wrapped BTC";
         break;
