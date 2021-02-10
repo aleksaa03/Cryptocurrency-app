@@ -18,7 +18,7 @@
   <body>
     <div class="options" id="options">
       <div class="option">
-        <i class="fas fa-times" id="close" onclick="options('close')"></i>
+        <i class="fas fa-times" id="close" onclick="options(false)"></i>
         <h1>Convert</h1>
         <div class="usd">
           <span>USD</span>
@@ -52,8 +52,9 @@
       />
       <p id="searchResults"></p>
       <div class="crypto" id="crypto"></div>
-      <i class="fas fa-cog" id="settings" onclick="options('open')"></i>
+      <i class="fas fa-cog" id="settings" onclick="options(true)"></i>
     </div>
+    <div class="details" id="details"></div>
     <script src="app.js"></script>
     <script src="src/index.js"></script>
   </body>

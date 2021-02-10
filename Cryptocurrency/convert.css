@@ -4,7 +4,10 @@
 .main .crypto {
   padding: 30px 0;
 }
-.main .crypto .crypto-currency img {
+.main .crypto-currency {
+  cursor: pointer;
+}
+img {
   height: 32px;
   width: 32px;
 }
@@ -61,7 +64,8 @@
   z-index: 1;
   display: none;
 }
-.options .option {
+.options .option,
+.details {
   height: 300px;
   width: 300px;
   background: #ffffff;
@@ -96,4 +100,27 @@
   right: 10px;
   font-size: 25px;
   cursor: pointer;
+}
+.details {
+  display: none;
+  border: 1px solid #000000;
+}
+.details .type,
+.details .more {
+  margin: 30px 0;
+}
+.details .type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.details .type img,
+.type h4 {
+  margin: 0 3px;
+}
+.details .type h4 {
+  font-size: 20px;
+}
+.details .more h4 {
+  margin: 10px 0;
 }
