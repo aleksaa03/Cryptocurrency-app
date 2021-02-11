@@ -106,9 +106,8 @@ if (convert != null) {
   radioButton[0].checked = true;
 }
 
-var savedCrypto = JSON.parse(sessionStorage.getItem("crypto"))[0];
-
 function search() {
+  let savedCrypto = JSON.parse(sessionStorage.getItem("crypto"))[0];
   var searchInput = document.getElementById("search").value;
   cryptoDiv.innerHTML = "";
 
@@ -126,9 +125,10 @@ function search() {
   }
 }
 
-var detailsDiv = document.getElementById("details");
+var detailsDiv = document.getElementById("details-block");
 
 function details(type) {
+  let savedCrypto = JSON.parse(sessionStorage.getItem("crypto"))[0];
   detailsDiv.innerHTML = "";
   detailsDiv.style.display = "block";
   detailsDiv.innerHTML = `<i class="fas fa-times" id="close" onclick="closeDetails()"></i>`;
